@@ -1,9 +1,6 @@
 #!/bin/bash
 
-HEX=("A8" "A9" "AA" "AB" "AC" "AD" "AE" "AF" 
-     "B0" "B1" "B2" "B3" "B4" "B5" "B6" "B7" 
-     "B8" "B9" "BA" "BB" "BC" "BD" "BE" "BF" 
-     "C0" "C1" "C2" "C3" "C4" "C5" "C6" "C7" 
+HEX=("C0" "C1" "C2" "C3" "C4" "C5" "C6" "C7" 
      "C8" "C9" "CA" "CB" "CC" "CD" "CE" "CF" 
      "D0" "D1" "D2" "D3" "D4" "D5" "D6" "D7" 
      "D8" "D9" "DA" "DB" "DC" "DD" "DE" "DF" 
@@ -31,7 +28,10 @@ HEX=("A8" "A9" "AA" "AB" "AC" "AD" "AE" "AF"
      "88" "89" "8A" "8B" "8C" "8D" "8E" "8F" 
      "90" "91" "92" "93" "94" "95" "96" "97" 
      "98" "99" "9A" "9B" "9C" "9D" "9E" "9F" 
-     "A0" "A1" "A2" "A3" "A4" "A5" "A6" "A7") 
+     "A0" "A1" "A2" "A3" "A4" "A5" "A6" "A7"
+     "A8" "A9" "AA" "AB" "AC" "AD" "AE" "AF" 
+     "B0" "B1" "B2" "B3" "B4" "B5" "B6" "B7" 
+     "B8" "B9" "BA" "BB" "BC" "BD" "BE" "BF") 
 
 BITPOS=$1
 FILENAME=$2
@@ -47,10 +47,10 @@ for ((i = 0; i < (7 - ${BITPOS}); i++)); do
 done
 
 for i in ${HEX[@]} ; do 
-    date | tee $2
-    echo $i | tee $2
+    date
+    echo $i
     for j in ${HEX[@]} ; do
-        ./main 0x${CMDPREFIX}${i}${CMDSUFFIX}${CMDPREFIX}${j}${CMDSUFFIX} ${BITPOS} | tee $2
+        ./assignment 0x${CMDPREFIX}${i}${CMDSUFFIX}${CMDPREFIX}${j}${CMDSUFFIX} ${BITPOS}
     done
 done
 
